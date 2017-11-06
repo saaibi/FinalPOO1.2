@@ -15,34 +15,42 @@ import java.io.InputStreamReader;
  */
 public class Ficha {
 
-    String posicion, figura;
+    String figura;
+    int columnaIni, posicionInicialCol, posicionInicialFila = 12;
+    boolean enJuego = false, corona = false;
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public Ficha() {
     }
 
-    public Ficha(String posicion, String figura) {
-        this.posicion = posicion;
+    public Ficha(String figura, int columnaIni, int posicionCol, int posicionFila) {
         this.figura = figura;
+        this.columnaIni = columnaIni;
+        this.posicionInicialCol = posicionCol;
+        this.posicionInicialFila = posicionFila;
     }
 
-    public void figuraPosicion(Jugador p1) {
-        switch (p1.color) {
+    public void figuraPosicion(String color) {
+        switch (color) {
             case "Verde":
                 figura = "♙";
-                posicion = "12,2";
+                columnaIni = 2;
+                posicionInicialCol = columnaIni;
                 break;
             case "Azul":
                 figura = "♘";
-                posicion = "12,2";
+                columnaIni = 3;
+                posicionInicialCol = columnaIni;
                 break;
             case "Rojo":
                 figura = "♔";
-                posicion = "12,1";
+                columnaIni = 1;
+                posicionInicialCol = columnaIni;
                 break;
             case "Amarillo":
                 figura = "♗";
-                posicion = "12,0";
+                columnaIni = 0;
+                posicionInicialCol = columnaIni;
                 break;
         }
     }

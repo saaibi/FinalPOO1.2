@@ -20,6 +20,7 @@ public class FinalPOO1 {
     /**
      * @param args the command line arguments
      */
+    static boolean inicioP1 = false;
     static Scanner lector = new Scanner(System.in);
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     static Dado dado1 = new Dado();
@@ -27,21 +28,24 @@ public class FinalPOO1 {
     static Random rnd = new Random();
     static Jugador p1 = new Jugador();
     static Jugador p2;
-    static Jugador p3;
-    static Jugador p4;
     static Maquina cpu = new Maquina();
     static Tablero tablero = new Tablero();
 //    static String[] colores = {"Verde", "Amarillo", "Rojo"};
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+
+//        tablero.inicializar2();
+//        tablero.inicializar();
         menu();
     }
 
     public static void menu() throws IOException {
         p1.namePlayer();
-        juegoNormal();
+        p1.seleccionarColor();
         jugador2();
+        juegoNormal();
+        System.out.println("***********************************************");
 
     }
 
@@ -51,35 +55,41 @@ public class FinalPOO1 {
         switch (rpta) {
             case 1:
                 System.out.println("Su oponente será la máquina");
-                primerTurno(p1, cpu);
-                p1.seleccionarColor();
+                rifaSaque(p1, cpu);
                 break;
             case 2:
                 p2 = new Jugador();
+                System.out.println("Nombre Jugador 2");
                 p2.namePlayer();
-                primerTurno(p1, p2);
+                p2.seleccionarColor();
+                rifaSaque(p1, p2);
                 break;
         }
     }
 
-    public static void primerTurno(Jugador p1, Jugador p2) {
+    public static void rifaSaque(Jugador p1, Jugador p2) {
         int numP1 = rifarTurno(p1);
         int numP2 = rifarTurno(p2);
         if (numP1 != numP2) {
             if (numP1 > numP2) {
                 System.out.println("El primer turno es para " + p1.nombre);
+                inicioP1 = true;
             } else {
                 System.out.println("El primer turno es para " + p2.nombre);
             }
         } else {
-            primerTurno(p1, p2);
+            rifaSaque(p1, p2);
         }
     }
 
     public static void juegoNormal() {
-
+        if (inicioP1) {
+            System.out.println("Turno P1");
+        } else {
+            System.out.println("Turno CPU");
+        }
     }
-
+    
     public static int rifarTurno(Jugador player) {
         Dado dadorifa = new Dado();
         Dado dadorifa2 = new Dado();
