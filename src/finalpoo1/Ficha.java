@@ -15,54 +15,34 @@ import java.io.InputStreamReader;
  */
 public class Ficha {
 
-    String color, posicion, figura;
-    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    String posicion, figura;
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public Ficha() {
     }
 
-    public Ficha(String color, String posicion, String figura) {
-        this.color = color;
+    public Ficha(String posicion, String figura) {
         this.posicion = posicion;
         this.figura = figura;
     }
 
-    public void seleccionarColor() throws IOException {
-        System.out.println("Seleccione el color de sus fichas\n 1. Verde\n 2. Azul\n 3. Amarillo\n 4. Rojo");
-        int respuestaColor = reader.read();
-        switch (respuestaColor) {
-            case 1:
-                color = "verde";
+    public void figuraPosicion(Jugador p1) {
+        switch (p1.color) {
+            case "Verde":
+                figura = "♙";
+                posicion = "12,2";
                 break;
-            case 2:
-                color = "azul";
+            case "Azul":
+                figura = "♘";
+                posicion = "12,2";
                 break;
-            case 3:
-                color = "amarillo";
+            case "Rojo":
+                figura = "♔";
+                posicion = "12,1";
                 break;
-            case 4:
-                color = "rojo";
-                break;
-        }
-    }
-
-    public void figuraPosicion() {
-        switch (color) {
-            case "verde":
-                figura = "&#x222e";
-                posicion = "";
-                break;
-            case "rojo":
-                figura = "";
-                posicion = "";
-                break;
-            case "azul":
-                figura = "";
-                posicion = "";
-                break;
-            case "amarillo":
-                figura = "";
-                posicion = "";
+            case "Amarillo":
+                figura = "♗";
+                posicion = "12,0";
                 break;
         }
     }

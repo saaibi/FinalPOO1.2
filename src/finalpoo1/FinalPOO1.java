@@ -30,23 +30,18 @@ public class FinalPOO1 {
     static Jugador p3;
     static Jugador p4;
     static Maquina cpu = new Maquina();
-    static String[] colores = {"Azul", "Verde", "Amarillo", "Rojo"};
     static Tablero tablero = new Tablero();
+//    static String[] colores = {"Verde", "Amarillo", "Rojo"};
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        System.out.println("\u260B");
-        String myUnicodeSymbol = "\u05D0";
-        System.out.println(myUnicodeSymbol);
         menu();
-
     }
 
     public static void menu() throws IOException {
-        namePlayer(p1);
+        p1.namePlayer();
         juegoNormal();
         jugador2();
-        
 
     }
 
@@ -57,52 +52,26 @@ public class FinalPOO1 {
             case 1:
                 System.out.println("Su oponente será la máquina");
                 primerTurno(p1, cpu);
+                p1.seleccionarColor();
                 break;
             case 2:
-                System.out.println("Cuaántos jugadores aparte de usted hay?\n(1-3)");
-                int numjug = lector.nextInt();
-                switch (numjug) {
-                    case 1:
-                        p2 = new Jugador();
-                        namePlayer(p2);
-                        primerTurno(p1, p2);
-                        break;
-                    case 2:
-                        p2 = new Jugador();
-                        p3 = new Jugador();
-                        namePlayer(p2);
-                        namePlayer(p3);
-                        break;
-                    case 3:
-                        p2 = new Jugador();
-                        p3 = new Jugador();
-                        p4 = new Jugador();
-                        namePlayer(p2);
-                        namePlayer(p3);
-                        namePlayer(p4);
-                        break;
-                }
-                break;
-            default:
+                p2 = new Jugador();
+                p2.namePlayer();
+                primerTurno(p1, p2);
                 break;
         }
     }
 
     public static void primerTurno(Jugador p1, Jugador p2) {
-        if (rifarTurno(p1) > rifarTurno(p2)) {
-            System.out.println("El primer turno es para " + p1.nombre);
+        if (rifarTurno(p1) != rifarTurno(p2)) {
+            if (rifarTurno(p1) > rifarTurno(p2)) {
+                System.out.println("El primer turno es para " + p1.nombre);
+            } else {
+                System.out.println("El primer turno es para " + p2.nombre);
+            }
         } else {
-            System.out.println("El primer turno es para " + p2.nombre);
+            primerTurno(p1, p2);
         }
-    }
-
-    public static void namePlayer(Jugador player) throws IOException {
-        System.out.println("Por favor ingrese su nombre:");
-        player.nombre = reader.readLine();
-    }
-
-    public static void juegoPP() {
-
     }
 
     public static void juegoNormal() {
@@ -120,41 +89,6 @@ public class FinalPOO1 {
         dadorifa2.pintarDado();
         int sumadados = dadorifa.valor + dadorifa2.valor;
         return sumadados;
-    }
-
-    public static void seleccionarColor(Jugador player) throws IOException {
-        String color;
-        System.out.println(player.nombre + " selecionnee un color:\n1. Amarillo\n2. Rojo\n3. Azul\n4. Verde");
-        int colorSelecionado = reader.read();
-        switch (colorSelecionado) {
-            case 1:
-                color = "Amarillo";
-                colorPicked(color, player);
-                break;
-            case 2:
-                color = "Rojo";
-                colorPicked(color, player);
-                break;
-            case 3:
-                color = "Azul";
-                colorPicked(color, player);
-
-                break;
-            case 4:
-                color = "Verde";
-                colorPicked(color, player);
-
-                break;
-        }
-    }
-
-    public static void colorPicked(String color, Jugador player) {
-        for (String colore : colores) {
-            if (color.equalsIgnoreCase(colore)) {
-                colore = "X";
-            }
-        }
-        player.color = color;
     }
 
 }
