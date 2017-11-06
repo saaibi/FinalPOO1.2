@@ -63,8 +63,10 @@ public class FinalPOO1 {
     }
 
     public static void primerTurno(Jugador p1, Jugador p2) {
-        if (rifarTurno(p1) != rifarTurno(p2)) {
-            if (rifarTurno(p1) > rifarTurno(p2)) {
+        int numP1 = rifarTurno(p1);
+        int numP2 = rifarTurno(p2);
+        if (numP1 != numP2) {
+            if (numP1 > numP2) {
                 System.out.println("El primer turno es para " + p1.nombre);
             } else {
                 System.out.println("El primer turno es para " + p2.nombre);
