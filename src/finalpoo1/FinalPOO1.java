@@ -88,17 +88,32 @@ public class FinalPOO1 {
     public static void juegoNormal() {
         if (inicioP1) {
             System.out.println("***********************************************");
-            System.out.println("Turno P1");
+            System.out.println("Turno " + p1.nombre);
             p1.menuTurno();
+            matarFicha(p1, cpu);
+            System.out.println("-----------------------------------------------");
+            System.out.println("Turno CPU");
             cpu.menuTurno();
+            matarFicha(cpu, p1);
             System.out.println("***********************************************");
         } else {
             System.out.println("***********************************************");
             System.out.println("Turno CPU");
             cpu.menuTurno();
+            matarFicha(cpu, p1);
+            System.out.println("-----------------------------------------------");
+            System.out.println("Turno " + p1.nombre);
             p1.menuTurno();
+            matarFicha(p1, cpu);
             System.out.println("***********************************************");
         }
+    }
+
+    private static void matarFicha(Jugador p1, Jugador p2) {
+        p1.matarFicha(p1.ficha1, p2);
+        p1.matarFicha(p1.ficha2, p2);
+        p1.matarFicha(p1.ficha3, p2);
+        p1.matarFicha(p1.ficha4, p2);
     }
 
     public static int rifarTurno(Jugador player) {

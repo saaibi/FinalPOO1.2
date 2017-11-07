@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author DAVID
  */
 public class Jugador {
-    
+
     Dado dado1 = new Dado();
     Dado dado2 = new Dado();
     Random rnd = new Random();
@@ -25,20 +25,20 @@ public class Jugador {
     Ficha ficha4 = new Ficha();
     String posicion;
     boolean par = false;
-    
+
     public Jugador() {
     }
-    
+
     public Jugador(String nombre, String color) {
         this.nombre = nombre;
         this.color = color;
     }
-    
+
     public void namePlayer() {
         System.out.println("Por favor ingrese su nombre:");
         nombre = reader.next();
     }
-    
+
     public void menuTurno() {
         if (!ficha1.enJuego && !ficha2.enJuego && !ficha3.enJuego && !ficha4.enJuego) {
             primerTurno();
@@ -52,7 +52,7 @@ public class Jugador {
             turnoNormal();
         }
     }
-    
+
     private void opcionesTurno(int suma) {
         System.out.println("Qué desea realizar:\n"
                 + " 1. Mover Ficha.\n"
@@ -100,9 +100,9 @@ public class Jugador {
                 }
                 break;
         }
-        
+
     }
-    
+
     public void primerTurno() {
         dado1.valor = rnd.nextInt(6) + 1;
         dado2.valor = rnd.nextInt(6) + 1;
@@ -116,20 +116,20 @@ public class Jugador {
             par = true;
         }
     }
-    
+
     public void fichaEnJuego(Ficha ficha) {
         ficha.enJuego = true;
     }
-    
+
     public void fichaEnCarcel(Ficha ficha) {
         ficha.enJuego = false;
     }
-    
+
     public void fichaEnCielo(Ficha ficha) {
         ficha.enJuego = false;
         ficha.corona = true;
     }
-    
+
     public void turnoNormal() {
         dado1.valor = rnd.nextInt(6) + 1;
         dado2.valor = rnd.nextInt(6) + 1;
@@ -139,30 +139,36 @@ public class Jugador {
         System.out.println("Su puntaje para mover es: " + sumaDados);
         opcionesTurno(sumaDados);
     }
-    
-    
-    
+
+    public void matarFicha(Ficha ficha, Jugador p2) {
+        if (posicion.equalsIgnoreCase(p2.posicion)) {
+            fichaEnCarcel(ficha);
+            System.out.println(nombre + " mató la ficha de " + p2.nombre);
+        }
+    }
+
     private void moverFicha(Ficha ficha, int sumaDados) {
         if (ficha.posicionInicialFila + sumaDados > 23) {
             ficha.posicionColNueva = ficha.posicionInicialCol;
-            
+
             int excedente = (ficha.posicionInicialFila + sumaDados) - 23;
             if (excedente > 1) {
                 ficha.posicionFilaNueva = 8 + excedente;
             } else {
                 ficha.posicionFilaNueva = 0;
             }
-            
+
             ficha.posicionColNueva++;
             if (ficha.posicionColNueva > 3) {
                 ficha.posicionColNueva = 0;
             }
+            ficha.posicionInicialCol = ficha.posicionColNueva;
+            ficha.posicionInicialFila = ficha.posicionFilaNueva;
             posicion = ficha.posicionFilaNueva + "," + ficha.posicionColNueva;
             System.out.println(posicion);
         }
-        
     }
-    
+
     public void seleccionarColor() {
         System.out.println(nombre + " selecionnee el número de color:\n 1. Amarillo\n 2. Rojo\n 3. Verde\n 4. Azul");
         int colorSelecionado = reader.nextInt();
@@ -189,12 +195,12 @@ public class Jugador {
                 break;
         }
     }
-    
+
     private void inicializarFichas() {
         ficha1.figuraPosicion(color);
         ficha2.figuraPosicion(color);
         ficha3.figuraPosicion(color);
         ficha4.figuraPosicion(color);
     }
-    
+
 }
