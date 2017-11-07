@@ -65,7 +65,10 @@ public class Maquina extends Jugador {
         }
     }
 
- 
+    public void color() {
+        int randomColor = rnd.nextInt(4)+1;
+        System.out.println("La màquina escogiò el color " + color);
+    }
 
     private void inicializarFichas() {
         ficha1.figuraPosicion(color);

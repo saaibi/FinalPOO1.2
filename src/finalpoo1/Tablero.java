@@ -38,7 +38,7 @@ public class Tablero {
     private final String LETRA_AMARILLA = "\u001B[33m";//LETRA AMARILLA
 
     boolean inicioP1 = false;
-    Scanner lector = new Scanner(System.in);
+    static Scanner lector = new Scanner(System.in);
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     Random rnd = new Random();
     Jugador p1 = new Jugador();
