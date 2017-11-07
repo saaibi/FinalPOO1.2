@@ -25,8 +25,9 @@ public class Jugador {
     Ficha ficha4 = new Ficha();
     String posicion;
     boolean par = false;
-    String[] colores = {"Azul", "Verde", "Amarillo", "Rojo"};
+    Tablero tablero = new Tablero();
     
+
     public Jugador() {
     }
 
@@ -190,22 +191,26 @@ public class Jugador {
             case 1:
                 color = "Amarillo";
                 System.out.println(nombre + ", su color es " + color);
+                tablero.colores[0][1] = "p1";
                 inicializarFichas();
                 break;
             case 2:
                 color = "Rojo";
                 System.out.println(nombre + ", su color es " + color);
                 inicializarFichas();
+                tablero.colores[1][1] = "p1";
                 break;
             case 3:
                 color = "Verde";
                 System.out.println(nombre + ", su color es " + color);
                 inicializarFichas();
+                tablero.colores[2][1] = "p1";
                 break;
             case 4:
                 color = "Azul";
                 System.out.println(nombre + ", su color es " + color);
                 inicializarFichas();
+                tablero.colores[3][1] = "p1";
                 break;
         }
     }

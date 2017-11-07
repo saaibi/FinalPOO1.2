@@ -45,9 +45,13 @@ public class Tablero {
     Jugador p2;
     Maquina cpu = new Maquina();
     boolean victoria = false;
+    String[][] colores = {{"Amarillo", ""}, {"Rojo", ""}, {"Verde", ""}, {"Azul", ""}};
 
     String BORRAR = "\u001B[0m"; //borrar letra y fondo
 
+    public Tablero() {
+    }
+    
     public void menu() throws IOException {
         p1.namePlayer();
         System.out.println("***********************************************");
