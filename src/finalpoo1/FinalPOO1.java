@@ -23,28 +23,31 @@ public class FinalPOO1 {
     static boolean inicioP1 = false;
     static Scanner lector = new Scanner(System.in);
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    static Dado dado1 = new Dado();
-    static Dado dado2 = new Dado();
     static Random rnd = new Random();
     static Jugador p1 = new Jugador();
     static Jugador p2;
     static Maquina cpu = new Maquina();
     static Tablero tablero = new Tablero();
-//    static String[] colores = {"Verde", "Amarillo", "Rojo"};
+    static boolean victoria = false;
 
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
 
-//        tablero.inicializar2();
-//        tablero.inicializar();
+        tablero.mostrar();
         menu();
     }
 
     public static void menu() throws IOException {
         p1.namePlayer();
+        System.out.println("***********************************************");
         p1.seleccionarColor();
+        System.out.println("***********************************************");
         jugador2();
-        juegoNormal();
+        System.out.println("***********************************************");
+        while (!victoria) {
+            juegoNormal();
+
+        }
         System.out.println("***********************************************");
 
     }
@@ -84,12 +87,20 @@ public class FinalPOO1 {
 
     public static void juegoNormal() {
         if (inicioP1) {
+            System.out.println("***********************************************");
             System.out.println("Turno P1");
+            p1.menuTurno();
+            cpu.menuTurno();
+            System.out.println("***********************************************");
         } else {
+            System.out.println("***********************************************");
             System.out.println("Turno CPU");
+            cpu.menuTurno();
+            p1.menuTurno();
+            System.out.println("***********************************************");
         }
     }
-    
+
     public static int rifarTurno(Jugador player) {
         Dado dadorifa = new Dado();
         Dado dadorifa2 = new Dado();

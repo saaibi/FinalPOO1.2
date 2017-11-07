@@ -6,7 +6,6 @@
 package finalpoo1;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -16,7 +15,7 @@ import java.io.InputStreamReader;
 public class Ficha {
 
     String figura;
-    int columnaIni, posicionInicialCol, posicionInicialFila = 12;
+    int columnaIni, posicionInicialCol, posicionInicialFila = 12, posicionColNueva, posicionFilaNueva;
     boolean enJuego = false, corona = false;
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 

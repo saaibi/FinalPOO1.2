@@ -41,14 +41,21 @@ public class Tablero {
 
             for (int j = 0; j < matrizParques[i].length; j++) {
 
-                if (j == 0) {
-                    fondo = FONDO_AMARILLO;
-                } else if (j == 1) {
-                    fondo = FONDO_ROJO;
-                } else if (j == 2) {
-                    fondo = FONDO_VERDE;
-                } else if (j == 3) {
-                    fondo = FONDO_AZUL;
+                switch (j) {
+                    case 0:
+                        fondo = FONDO_AMARILLO;
+                        break;
+                    case 1:
+                        fondo = FONDO_ROJO;
+                        break;
+                    case 2:
+                        fondo = FONDO_VERDE;
+                        break;
+                    case 3:
+                        fondo = FONDO_AZUL;
+                        break;
+                    default:
+                        break;
                 }
 
                 matrizParques[i][j] = fondo + i + "," + j;
@@ -64,70 +71,39 @@ public class Tablero {
         }
     }
 
-    public void inicializar2() {
+    public void mostrar() {
 
-        String variable10 = fichaVerde + " " + fichaVerde + " " + fichaVerde + " " + fichaVerde;
+        String variable10 = "       ";
         System.out.println("");
-        String[][] matrizTablero = {{"                ZONA CIELO                    ZONA CIELO                    ZONA CIELO                    ZONA CIELO"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "SEGURO ZA1-CA1" + "  " + FONDO_AMARILLO + "   SEGURO   " + FONDO_AMARILLO + "  ", FONDO_NEGRO + LETRA_ROJA + "SEGURO ZR1-CR1" + "  " + FONDO_ROJO + "   SEGURO   " + FONDO_ROJO + "  ", FONDO_NEGRO + LETRA_VERDE + "SEGURO ZV1-CV1" + "  " + FONDO_VERDE + "   SEGURO  " + FONDO_VERDE + "   ", FONDO_NEGRO + LETRA_AZUL + "SEGURO ZAZ1-CA1Z" + "  " + FONDO_AZUL + "   SEGURO   " + FONDO_AZUL + "  "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA2" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA2" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA2" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA2" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA3" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA3" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA3" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA3" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA4" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA4" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA4" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA4" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA5" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA5" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA5" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA5" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA6" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA6" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA6" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA6" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA7" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA7" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA7" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA7" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "CA8" + "             " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "CA8" + "             " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "CA8" + "            " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "CA8" + "             " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {"                ZONA NO ASEGURADA             ZONA NO ASEGURADA            ZONA NO ASEGURADA              ZONA NO ASEGURADA"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA1" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR1" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV1" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ1" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA2" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR2" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV2" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ2" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA3" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR3" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV3" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ3" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA4" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR4" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV4" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ4" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {"                SALIDA                        SALIDA                        SALIDA                        SALIDA"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "SALIDA SA-ZSA1" + "  " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "SALIDA SA-ZSA1" + "  " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "SALIDA SA-ZSA1" + " " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + " SALIDA SA-ZSA1" + " " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {"                ZONA NO ASEGURADA               ZONA NO ASEGURADA             ZONA NO ASEGURADA              ZONA NO ASEGURADA"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA5" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR5" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV5" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ5" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA6" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR6" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV6" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ6" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA7" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR7" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV7" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ7" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA8" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR8" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV8" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ8" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA9" + "           " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR9" + "           " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV9" + "          " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ9" + "          " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA10" + "          " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR10" + "          " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV10" + "         " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ10" + "         " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {"                SEGURO                         SEGURO                         SEGURO                          SEGURO"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "SEGURO-A#2" + "      " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "SEGURO-R#2" + "      " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "SEGURO-V#2" + "     " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "SEGURO-AZ#2" + "     " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {"                ZONA NO ASEGURADA             ZONA NO ASEGURADA            ZONA NO ASEGURADA              ZONA NO ASEGURADA"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA11" + "          " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR11" + "          " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV11" + "         " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ11" + "         " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA12" + "          " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR12" + "          " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV12" + "         " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ12" + "         " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA13" + "          " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR13" + "          " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV13" + "         " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ13" + "         " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "},
-        {"                --------------                --------------                --------------                --------------"},
-        {FONDO_NEGRO + LETRA_AMARILLA + "ZNSA14" + "          " + FONDO_AMARILLO + variable10 + FONDO_AMARILLO + "     ", FONDO_NEGRO + LETRA_ROJA + "ZNSR14" + "          " + FONDO_ROJO + variable10 + FONDO_ROJO + "     ", FONDO_NEGRO + LETRA_VERDE + "ZNSV14" + "         " + FONDO_VERDE + variable10 + FONDO_VERDE + "     ", FONDO_NEGRO + LETRA_AZUL + "ZNSAZ14" + "         " + FONDO_AZUL + variable10 + FONDO_AZUL + "     "}};
+        String[][] matrizTablero = {{FONDO_BLANCO + "ZA1-CA1" + "  " + FONDO_AMARILLO + "   SEGURO   " + FONDO_AMARILLO, FONDO_BLANCO + "ZR1-CR1" + "  " + FONDO_ROJO + "   SEGURO   " , FONDO_BLANCO + "ZV1-CV1" + "  " + FONDO_VERDE + "   SEGURO   " , FONDO_BLANCO + "ZAZ1-CA1Z" + "  " + FONDO_AZUL + "   SEGURO   "},
+        {FONDO_BLANCO + "CA2" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR2" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV2" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ2" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA3" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR3" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV3" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ3" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA4" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR4" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV4" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ4" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA5" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR5" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV5" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ5" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA6" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR6" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV6" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ6" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA7" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR7" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV7" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ7" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "CA8" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR8" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV8" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ8" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA2" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR2" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV2" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ2" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA3" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR3" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV3" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ3" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA4" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR4" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV4" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ4" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA5" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR5" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV5" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ5" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "SA-ZA6" + "   " + FONDO_AMARILLO + "   SALIDA   " + FONDO_AMARILLO, FONDO_BLANCO + "SR-ZR6" + "   " + FONDO_ROJO + "   SALIDA   ", FONDO_BLANCO + "SV-ZV6" + "   " + FONDO_VERDE + "   SALIDA   ", FONDO_BLANCO + "SAZ-ZAZ6" + "   " + FONDO_AZUL + "   SALIDA   "},
+        {FONDO_BLANCO + "ZA7" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR7" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV7" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ7" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA8" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR8" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV8" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ8" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA9" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR9" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV9" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ9" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA10" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR10" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV10" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ10" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA11" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR11" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV11" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ11" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA12" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR12" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV12" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ12" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA13" + "     " + FONDO_AMARILLO + "   SEGURO   " + FONDO_AMARILLO, FONDO_BLANCO + "ZR13" + "     " + FONDO_ROJO + "   SEGURO   ", FONDO_BLANCO + "ZV13" + "     " + FONDO_VERDE + "   SEGURO   ", FONDO_BLANCO + "ZAZ13" + "      " + FONDO_AZUL + "   SEGURO   "},
+        {FONDO_BLANCO + "ZA14" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR14" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV14" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ14" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA15" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR15" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV15" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ15" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA16" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR16" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV16" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ16" + "      " + FONDO_AZUL + "   " + variable10 + "  "},
+        {FONDO_BLANCO + "ZA17" + "     " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "ZR17" + "     " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "ZV17" + "     " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "ZAZ17" + "      " + FONDO_AZUL + "   " + variable10 + "  "}};
         for (String[] matrizTablero1 : matrizTablero) {
             for (String matrizTablero11 : matrizTablero1) {
                 System.out.print(matrizTablero11);
             }
             System.out.println("");
         }
-
     }
-
 }
