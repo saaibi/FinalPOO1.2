@@ -78,6 +78,38 @@ public class Maquina extends Jugador {
             posicion = ficha.posicionFilaNueva + "," + ficha.posicionColNueva;
             System.out.println(posicion);
         }
+    }
 
+    public void seleccionarColor() {
+        int colorSelecionado = rnd.nextInt(4)+1;
+        switch (colorSelecionado) {
+            case 1:
+                color = "Amarillo";
+                System.out.println(nombre + ", su color es " + color);
+                inicializarFichas();
+                break;
+            case 2:
+                color = "Rojo";
+                System.out.println(nombre + ", su color es " + color);
+                inicializarFichas();
+                break;
+            case 3:
+                color = "Verde";
+                System.out.println(nombre + ", su color es " + color);
+                inicializarFichas();
+                break;
+            case 4:
+                color = "Azul";
+                System.out.println(nombre + ", su color es " + color);
+                inicializarFichas();
+                break;
+        }
+    }
+
+    private void inicializarFichas() {
+        ficha1.figuraPosicion(color);
+        ficha2.figuraPosicion(color);
+        ficha3.figuraPosicion(color);
+        ficha4.figuraPosicion(color);
     }
 }

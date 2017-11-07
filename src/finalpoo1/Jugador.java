@@ -25,7 +25,8 @@ public class Jugador {
     Ficha ficha4 = new Ficha();
     String posicion;
     boolean par = false;
-
+    String[] colores = {"Azul", "Verde", "Amarillo", "Rojo"};
+    
     public Jugador() {
     }
 
@@ -58,7 +59,7 @@ public class Jugador {
                 + " 1. Mover Ficha.\n"
                 + " 2. Pasar Turno.\n");
         if (ficha1.enJuego && ficha2.enJuego && ficha3.enJuego && ficha4.enJuego) {
-            System.out.println(".");
+            System.out.println("");
         } else if (dado1.valor == dado2.valor) {
             System.out.println(" 3. Salir de la carcel");
         }
@@ -113,6 +114,7 @@ public class Jugador {
             fichaEnJuego(ficha2);
             fichaEnJuego(ficha3);
             fichaEnJuego(ficha4);
+            posicion = "";
             par = true;
         }
     }
@@ -140,10 +142,22 @@ public class Jugador {
         opcionesTurno(sumaDados);
     }
 
-    public void matarFicha(Ficha ficha, Jugador p2) {
-        if (posicion.equalsIgnoreCase(p2.posicion)) {
-            fichaEnCarcel(ficha);
-            System.out.println(nombre + " mató la ficha de " + p2.nombre);
+    public void matarFicha(Jugador p2) {
+        if (ficha1.posicion.equalsIgnoreCase(p2.ficha1.posicion)) {
+            fichaEnCarcel(p2.ficha1);
+            System.out.println(nombre + " mató la ficha 1 de " + p2.nombre);
+        }
+        if (ficha2.posicion.equalsIgnoreCase(p2.ficha2.posicion)) {
+            fichaEnCarcel(p2.ficha2);
+            System.out.println(nombre + " mató la ficha 2 de " + p2.nombre);
+        }
+        if (ficha3.posicion.equalsIgnoreCase(p2.ficha3.posicion)) {
+            fichaEnCarcel(p2.ficha3);
+            System.out.println(nombre + " mató la ficha 3 de " + p2.nombre);
+        }
+        if (ficha4.posicion.equalsIgnoreCase(p2.ficha4.posicion)) {
+            fichaEnCarcel(p2.ficha4);
+            System.out.println(nombre + " mató la ficha 4 de " + p2.nombre);
         }
     }
 

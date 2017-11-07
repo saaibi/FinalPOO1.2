@@ -5,6 +5,12 @@
  */
 package finalpoo1;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author avalencia
@@ -31,7 +37,130 @@ public class Tablero {
     private final String LETRA_ROJA = "\u001B[31m";//LETRA ROJA
     private final String LETRA_AMARILLA = "\u001B[33m";//LETRA AMARILLA
 
+    boolean inicioP1 = false;
+    Scanner lector = new Scanner(System.in);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    Random rnd = new Random();
+    Jugador p1 = new Jugador();
+    Jugador p2;
+    Maquina cpu = new Maquina();
+    boolean victoria = false;
+
     String BORRAR = "\u001B[0m"; //borrar letra y fondo
+
+    public void menu() throws IOException {
+        p1.namePlayer();
+        System.out.println("***********************************************");
+        p1.seleccionarColor();
+        System.out.println("***********************************************");
+        jugador2();
+        System.out.println("***********************************************");
+        mostrar();
+        System.out.println("***********************************************");
+        while (!victoria) {
+            juegoNormal();
+
+        }
+        System.out.println("***********************************************");
+
+    }
+
+    public void jugador2() throws IOException {
+        System.out.println("Quien va a ser tu rival?\n1. Máquina\n2. Humanos");
+        int rpta = lector.nextInt();
+        switch (rpta) {
+            case 1:
+                System.out.println("Su oponente será la máquina");
+                p2 = cpu;
+                rifaSaque(p1, cpu);
+                break;
+            case 2:
+                p2 = new Jugador();
+                System.out.println("Nombre Jugador 2");
+                p2.namePlayer();
+                p2.seleccionarColor();
+                rifaSaque(p1, p2);
+                break;
+        }
+    }
+
+    public void rifaSaque(Jugador p1, Jugador p2) {
+        int numP1 = rifarTurno(p1);
+        int numP2 = rifarTurno(p2);
+        if (numP1 != numP2) {
+            if (numP1 > numP2) {
+                System.out.println("El primer turno es para " + p1.nombre);
+                inicioP1 = true;
+            } else {
+                System.out.println("El primer turno es para " + p2.nombre);
+            }
+        } else {
+            rifaSaque(p1, p2);
+        }
+    }
+
+    public void juegoNormal() {
+        if (inicioP1) {
+            System.out.println("***********************************************");
+            System.out.println("Turno " + p1.nombre);
+            p1.menuTurno();
+            validarFichasCarcel(p1, cpu);
+            System.out.println("-----------------------------------------------");
+            System.out.println("Turno CPU");
+            cpu.menuTurno();
+            validarFichasCarcel(cpu, p1);
+            System.out.println("***********************************************");
+            condicionVictoria(p1);
+            condicionVictoria(cpu);
+        } else {
+            System.out.println("***********************************************");
+            System.out.println("Turno CPU");
+            cpu.menuTurno();
+            validarFichasCarcel(cpu, p1);
+            System.out.println("-----------------------------------------------");
+            System.out.println("Turno " + p1.nombre);
+            p1.menuTurno();
+            validarFichasCarcel(p1, cpu);
+            System.out.println("***********************************************");
+            condicionVictoria(p1);
+            condicionVictoria(cpu);
+        }
+    }
+
+    private void validarFichasCarcel(Jugador p1, Jugador p2) {
+        if (p1.ficha1.enJuego && p1.ficha2.enJuego && p1.ficha3.enJuego && p1.ficha4.enJuego) {
+            System.out.println("");
+        } else {
+            matarFicha(p1, p2);
+        }
+    }
+
+    private void condicionVictoria(Jugador p1) {
+        if (p1.ficha1.corona && p1.ficha2.corona && p1.ficha2.corona && p1.ficha2.corona) {
+            victoria = true;
+            System.out.println(p1.nombre + " coronó todas sus fichas, FELICIDADES!!");
+        }
+    }
+
+    private void matarFicha(Jugador p1, Jugador p2) {
+        p1.matarFicha(p2);
+        p1.matarFicha(p2);
+        p1.matarFicha(p2);
+        p1.matarFicha(p2);
+    }
+
+    public int rifarTurno(Jugador player) {
+        Dado dadorifa = new Dado();
+        Dado dadorifa2 = new Dado();
+        System.out.println("Se va a rifar el turno para " + player.nombre);
+        dadorifa.valor = rnd.nextInt(6) + 1;
+        dadorifa2.valor = rnd.nextInt(6) + 1;
+        System.out.println("Los dados se tiraron:");
+        dadorifa.pintarDado();
+        dadorifa2.pintarDado();
+        int sumadados = dadorifa.valor + dadorifa2.valor;
+        return sumadados;
+    }
 
     public void inicializar() {
 
@@ -74,8 +203,9 @@ public class Tablero {
     public void mostrar() {
 
         String variable10 = "       ";
+
         System.out.println("");
-        String[][] matrizTablero = {{FONDO_BLANCO + "ZA1-CA1" + "  " + FONDO_AMARILLO + "   SEGURO   " + FONDO_AMARILLO, FONDO_BLANCO + "ZR1-CR1" + "  " + FONDO_ROJO + "   SEGURO   " , FONDO_BLANCO + "ZV1-CV1" + "  " + FONDO_VERDE + "   SEGURO   " , FONDO_BLANCO + "ZAZ1-CA1Z" + "  " + FONDO_AZUL + "   SEGURO   "},
+        String[][] matrizTablero = {{FONDO_BLANCO + "ZA1-CA1" + "  " + FONDO_AMARILLO + "   SEGURO   " + FONDO_AMARILLO, FONDO_BLANCO + "ZR1-CR1" + "  " + FONDO_ROJO + "   SEGURO   ", FONDO_BLANCO + "ZV1-CV1" + "  " + FONDO_VERDE + "   SEGURO   ", FONDO_BLANCO + "ZAZ1-CA1Z" + "  " + FONDO_AZUL + "   SEGURO   "},
         {FONDO_BLANCO + "CA2" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR2" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV2" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ2" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
         {FONDO_BLANCO + "CA3" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR3" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV3" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ3" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
         {FONDO_BLANCO + "CA4" + "      " + FONDO_AMARILLO + "   " + variable10 + "  " + FONDO_AMARILLO, FONDO_BLANCO + "CR4" + "      " + FONDO_ROJO + "   " + variable10 + "  ", FONDO_BLANCO + "CV4" + "      " + FONDO_VERDE + "   " + variable10 + "  ", FONDO_BLANCO + "CAZ4" + "       " + FONDO_AZUL + "   " + variable10 + "  "},
