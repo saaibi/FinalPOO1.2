@@ -15,6 +15,37 @@ public class Maquina extends Jugador {
         super.nombre = "CPU";
     }
 
+    @Override
+    public void menuTurno() {
+        if (!ficha1.enJuego && !ficha2.enJuego && !ficha3.enJuego && !ficha4.enJuego) {
+            primerTurno();
+            if (par) {
+                System.out.println("Sus Fichas salieron de la carcel, ahora están en salida");
+                opcionesTurno(0);
+            } else {
+                System.out.println("Usted no sacó par\n FIN DEL TURNO.");
+            }
+        } else {
+            turnoNormal();
+        }
+    }
+
+    @Override
+    public void primerTurno() {
+        dado1.valor = rnd.nextInt(6) + 1;
+        dado2.valor = rnd.nextInt(6) + 1;
+        dado1.pintarDado();
+        dado2.pintarDado();
+        if (dado1.valor == dado2.valor) {
+            fichaEnJuego(ficha1);
+            fichaEnJuego(ficha2);
+            fichaEnJuego(ficha3);
+            fichaEnJuego(ficha4);
+            posicion = "";
+            par = true;
+        }
+    }
+
     private void opcionesTurno(int suma) {
         if (ficha1.enJuego && ficha2.enJuego && ficha3.enJuego && ficha4.enJuego) {
             System.out.println(".");
@@ -66,7 +97,7 @@ public class Maquina extends Jugador {
     }
 
     public void color() {
-        int randomColor = rnd.nextInt(4)+1;
+        int randomColor = rnd.nextInt(4) + 1;
         System.out.println("La màquina escogiò el color " + color);
     }
 

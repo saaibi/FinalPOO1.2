@@ -26,7 +26,6 @@ public class Jugador {
     String posicion;
     boolean par = false;
     Tablero tablero = new Tablero();
-    
 
     public Jugador() {
     }
@@ -49,6 +48,8 @@ public class Jugador {
                 opcionesTurno(0);
             } else {
                 System.out.println("Usted no sacó par\n FIN DEL TURNO.");
+                System.out.println("Digite cualquier tecla para continuar");
+                String any = reader.next();
             }
         } else {
             turnoNormal();
@@ -144,21 +145,17 @@ public class Jugador {
     }
 
     public void matarFicha(Jugador p2) {
-        if (ficha1.posicion.equalsIgnoreCase(p2.ficha1.posicion)) {
+        if (this.ficha1.posicion.equalsIgnoreCase(p2.ficha1.posicion)) {
             fichaEnCarcel(p2.ficha1);
-            System.out.println(nombre + " mató la ficha 1 de " + p2.nombre);
         }
-        if (ficha2.posicion.equalsIgnoreCase(p2.ficha2.posicion)) {
+        if (this.ficha2.posicion.equalsIgnoreCase(p2.ficha2.posicion)) {
             fichaEnCarcel(p2.ficha2);
-            System.out.println(nombre + " mató la ficha 2 de " + p2.nombre);
         }
-        if (ficha3.posicion.equalsIgnoreCase(p2.ficha3.posicion)) {
+        if (this.ficha3.posicion.equalsIgnoreCase(p2.ficha3.posicion)) {
             fichaEnCarcel(p2.ficha3);
-            System.out.println(nombre + " mató la ficha 3 de " + p2.nombre);
         }
-        if (ficha4.posicion.equalsIgnoreCase(p2.ficha4.posicion)) {
+        if (this.ficha4.posicion.equalsIgnoreCase(p2.ficha4.posicion)) {
             fichaEnCarcel(p2.ficha4);
-            System.out.println(nombre + " mató la ficha 4 de " + p2.nombre);
         }
     }
 

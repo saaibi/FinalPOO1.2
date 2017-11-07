@@ -92,34 +92,38 @@ public class FinalPOO1 {
             System.out.println("***********************************************");
             System.out.println("Turno " + p1.nombre);
             p1.menuTurno();
-            validarFichasCarcel(p1, cpu);
+            validarFichasCarcel(p1, p2);
+            matarFicha(p1, p2);
             System.out.println("-----------------------------------------------");
-            System.out.println("Turno CPU");
-            cpu.menuTurno();
-            validarFichasCarcel(cpu, p1);
+            System.out.println("Turno " + p2.nombre);
+            p2.menuTurno();
+            validarFichasCarcel(p2, p1);
+            matarFicha(p1, p2);
             System.out.println("***********************************************");
             condicionVictoria(p1);
-            condicionVictoria(cpu);
+            condicionVictoria(p2);
         } else {
             System.out.println("***********************************************");
-            System.out.println("Turno CPU");
-            cpu.menuTurno();
-            validarFichasCarcel(cpu, p1);
+            System.out.println("Turno " + p2.nombre);
+            p2.menuTurno();
+            validarFichasCarcel(p2, p1);
+            matarFicha(p1, p2);
             System.out.println("-----------------------------------------------");
             System.out.println("Turno " + p1.nombre);
             p1.menuTurno();
-            validarFichasCarcel(p1, cpu);
+            validarFichasCarcel(p1, p2);
+            matarFicha(p1, p2);
             System.out.println("***********************************************");
             condicionVictoria(p1);
-            condicionVictoria(cpu);
+            condicionVictoria(p2);
         }
     }
 
     private static void validarFichasCarcel(Jugador p1, Jugador p2) {
         if (p1.ficha1.enJuego && p1.ficha2.enJuego && p1.ficha3.enJuego && p1.ficha4.enJuego) {
-            System.out.println("");
+            System.out.println("No tiene fichas en la carcel");
         } else {
-            matarFicha(p1, p2);
+            System.out.println("Al menos tiene una ficha en la carcel");
         }
     }
 
@@ -131,9 +135,6 @@ public class FinalPOO1 {
     }
 
     private static void matarFicha(Jugador p1, Jugador p2) {
-        p1.matarFicha(p2);
-        p1.matarFicha(p2);
-        p1.matarFicha(p2);
         p1.matarFicha(p2);
     }
 
